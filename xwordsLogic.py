@@ -12,7 +12,7 @@ class Cons:
     VALS=STD_ENG_SCRBL_VALS
 
 
-class Tiles(self, ltr=""):
+class Tiles():
   def __init__(self,id,ltr,val):
     self.id=id
     self.ltr=ltr.lower()
@@ -23,25 +23,25 @@ class Tiles(self, ltr=""):
     self.s=0
     self.e=0
 
-class Player(self, ltr=""):
-  def __init__(self):
+class Player():
+  def __init__(self,name=""):
     self.points=0
     self.tiles=[];
-    if ltr=="":
-      self.ltr=self.askForltr()
-    else:
-      self.ltr=ltr
+    if name=="":
+      self.ltr=self.askForName()
   def addPoints(pts):
     self.points+=pts
   def addTiles(tiles=[]):
     self.tiles.append( tiles )
       if( len( self.tiles ) > 7 ):
         raise SystemError("The player %s has to many tiles %d"%(self.ltr,len(self.tiles)))
+  def AskForName():
 
 
 class XwordsLogic():
   def __init__(self):
     self.bag=[]
+    self.plyrs=[]
     cnt=0
     for ltr num in Cons.DIST:
       for i in num:
@@ -50,7 +50,30 @@ class XwordsLogic():
     if( len( self.bag ) > Cons.TILE_COUNT ):
       raise SystemError("The bag has too many tiles %d"%(len(self.bag)))
     random.shuffle( self.bag )
+    nPlyrs=self.getNumberPlayers()
+    for n in nPlyrs:
+      self.plyrs.append( Player( "plyr%d"%n ) ) # TODO - leave empty to add real names
+    firstPlyr=1 # TODO - First player based on random bag pick whoever got lowest value
+    turn=0
 
+
+
+  def getNumberPlayers( N ):
+    print( "getNumberPlayers: TODO- for no just return 4")
+    return 4;
+
+  def getNBagTiles( N ):
+    rtrn=[]
+    for n in N:
+      i=random.randint(0,len(self.bag)-1)
+      rtrn.append( self.bag.pop(i) )
+  return rtrn
+
+  def chkBrd(): print("TODO");
+
+  def MainGameLoop():
+    for p in player:
+      self.getNextWord( plyrs[
 
 rckLtrs = 'kduemsp'
 brdTiles = [
